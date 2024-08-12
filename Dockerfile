@@ -4,6 +4,8 @@ FROM cloudron/base:3.2.0@sha256:ba1d566164a67c266782545ea9809dc611c4152e27686fd1
 RUN mkdir -p /app/code /app/pkg /app/data /app/code/auto/addons
 WORKDIR /app/code
 
+RUN apt-key del 656408E390CFB1F5
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 656408E390CFB1F5
 RUN apt-get update && \
     apt-get install -y \
     python3-dev libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev \
@@ -16,8 +18,7 @@ RUN curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/wkhtmltopdf/releas
     rm -f ./wkhtmltox.deb && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt
 
-RUN apt-key del 656408E390CFB1F5
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 656408E390CFB1F5
+
 RUN npm install -g rtlcss
 
 COPY bin/* /usr/local/bin/
