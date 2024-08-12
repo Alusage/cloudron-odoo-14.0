@@ -135,7 +135,7 @@ nginx -c /run/nginx/nginx.conf &
 echo "Resource allocation (hard limit: 100% of available memory; soft limit: 80%)"
 if [[ -f /sys/fs/cgroup/memory/memory.memsw.limit_in_bytes ]]; then
   memory_limit_hard=$(($(cat /sys/fs/cgroup/memory/memory.memsw.limit_in_bytes)))
-  memory_limit_soft=$((memory_limit_hard * 4 / 5))
+  memory_limit_soft=$((memory_limit_hard / 5 * 4))
 else
   memory_limit_hard=2684354560
   memory_limit_soft=2147483648 # (memory_limit_hard * 4 / 5)

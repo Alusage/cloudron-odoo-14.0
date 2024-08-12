@@ -59,8 +59,6 @@
   target: oca 14.0
   merges:
     - oca 14.0
-    - oca refs/pull/1087/head
-    - oca refs/pull/1236/head
 ./community-data-files:
   defaults:
     # Shallow repositories ($DEPTH_DEFAULT=1) are faster & thinner
@@ -91,9 +89,9 @@
     depth: $DEPTH_DEFAULT
   remotes:
     oca: https://github.com/OCA/l10n-switzerland.git
-  target: oca 12.0
+  target: oca 14.0
   merges:
-    - oca 12.0
+    - oca 14.0
 ./l10n-france:
   defaults:
     # Shallow repositories ($DEPTH_DEFAULT=1) are faster & thinner

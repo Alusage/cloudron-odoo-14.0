@@ -47,7 +47,7 @@ openpyxl
 PyGithub
 caldav
 python-stdnum==1.17
-vatnumber
+vatnumber3
 pydrive
 weboob
 dropbox
@@ -55,3 +55,10 @@ pysftp
 icalendar
 jsondiff
 extendable-pydantic
+pdfplumber
+pycrypto
+roulier
+email_validator
+stripe
+extract-msg
+pycryptodome

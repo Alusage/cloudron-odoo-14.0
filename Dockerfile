@@ -16,6 +16,8 @@ RUN curl -o wkhtmltox.deb -sSL https://github.com/wkhtmltopdf/wkhtmltopdf/releas
     rm -f ./wkhtmltox.deb && \
     rm -rf /var/lib/apt/lists/* /var/cache/apt
 
+RUN apt-key del 656408E390CFB1F5
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 656408E390CFB1F5
 RUN npm install -g rtlcss
 
 COPY bin/* /usr/local/bin/
@@ -49,7 +51,7 @@ RUN pip3 install wheel && \
     && (python3 -m compileall -q /usr/local/lib/python3.8/ || true)
 
 # Patch Odoo to prevent connecting to the default database named 'postgres' every now and then.
-RUN  sed -i.bak "720i\    to = tools.config['db_name']" /app/code/odoo/odoo/sql_db.py
+RUN  sed -i.bak "760i\    to = tools.config['db_name']" /app/code/odoo/odoo/sql_db.py
 
 # Properly map the LDAP attribute 'displayname' instead of 'cn' to the display name of the logged in user.
 RUN  sed -i.bak "181s/'cn'/'displayname'/" /app/code/odoo/addons/auth_ldap/models/res_company_ldap.py
